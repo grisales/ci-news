@@ -35,7 +35,16 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+// *** Meaning that get('URi', 'Class::Method'); ***
+// In the following examples, the second rule in the $routes object 
+// matches GET request to the URI path /pages maps the index() method 
+// of the Pages class.
+// The third rule in the $routes object matches GET request to any URI
+// path using the wildcard string (:any), and passes the parameter to
+// the view() method of the Pages class.
 $routes->get('/', 'Home::index');
+$routes->get('pages', 'Pages::index');
+$routes->get('(:any)', 'Pages::view/$1');
 
 /*
  * --------------------------------------------------------------------
