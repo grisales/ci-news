@@ -43,6 +43,7 @@ $routes->set404Override();
 // path using the wildcard string (:any), and passes the parameter to
 // the view() method of the Pages class.
 $routes->get('/', 'Home::index');
+$routes->match(['get', 'post'], 'news/create', 'News::create');
 $routes->get('news/(:segment)', 'News::view/$1');
 $routes->get('news', 'News::index');
 $routes->get('pages', 'Pages::index');
